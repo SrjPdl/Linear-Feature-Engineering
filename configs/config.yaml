@@ -1,0 +1,5 @@
+k_folds: 5
+max_degree: 10
+train_file_path: "./data/traindata.txt"
+test_file_path: "./data/testinputs.txt"
+prediction_file_path: "./artifacts/test_prediction.txt"
