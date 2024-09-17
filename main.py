@@ -17,6 +17,7 @@ def main():
 
     best_feature_indices = base_model.select_best_features(best_degree, 5)
 
+
     X_new = X[:,best_feature_indices]
     new_model = Model(X_new, y, config["k_folds"])
     PLOT_STATE = "selected_5"
@@ -27,6 +28,8 @@ def main():
     X_test_selected = test_data.values[:,best_feature_indices]
     test_predictions = new_model.get_predictions(X_test_selected, (best_degree, best_model))
     write_predictions_to_file(test_predictions, config["prediction_file_path"])
+
+    print("Model MSE with 5 features: ", (((predictions - y)**2).sum() / len(y)))
 
     print(f"Best model degree with only {best_feature_indices} features:", best_degree)
 
